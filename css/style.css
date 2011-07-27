@@ -77,6 +77,8 @@ a:hover { color: #036; }
 /* ________________________________________________________________________________________________ Slide Styles - Generic */
 
 body {
+    font-family: 'Helvetica Neue', Helvetica, sans-serif;
+    color: #333;
     background-color: #fef9ef;
 }
 
@@ -103,7 +105,6 @@ article[role="main"] {
 .slide header h1 {
     color: #333;
     text-align: left;
-    font-family: 'Helvetica Neue';
     letter-spacing: -.05em;
     font-size: 5em;
     line-height: 1em;
@@ -122,6 +123,15 @@ article[role="main"] {
 .slide .snippet .notes {
     float: right;
     width: 400px;
+}
+
+code {
+    font-size: 18px;
+}
+
+pre {
+    font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important;
+    font-size: 2em;
 }
 
 

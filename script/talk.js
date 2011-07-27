@@ -38,10 +38,13 @@ $(function() {
     
     window.Presentor = Backbone.View.extend({
         el: $('#container'),
+        
+        currentSlide: 0,
                 
         initialize: function() {
             Slides.bind('add', this.add, this);
             Slides.bind('all', this.render, this);
+            $(document).keyup(_.bind(this.onKeyUp, this));
         },
         
         render: function() {
@@ -53,14 +56,34 @@ $(function() {
             var view = new SlideView({model: slide});
             this.$('#main').append(view.render().el);
         },
+        
+        onKeyUp: function(event) {
+            event.preventDefault();
+            if(event.keyCode == 32) {
+                this.currentSlide = Math.min(Slides.length, this.currentSlide + 1);
+            } else if(event.keyCode == 8) {
+                this.currentSlide = Math.max(0, this.currentSlide - 1);
+            }
+            slide = Slides.models[this.currentSlide];
+            //console.log(this.currentSlide, slide, $(slide.view.el).offset());
+        }
     });
     
     window.app = new Presentor();
     
     // bootstrap the current page content into the app.
-    
+    $('section.slide').each(function(index) {
+        var jel = $(this);
+        Slides.create({
+            title: jel.find('h1').text(), 
+            content: jel.find('.content').html()
+        });
+        jel.remove();
+    });
     
     // and run, run like the wind!
-    var h = $(window).height();
-    $('.slide').css({height: h});
+    $(window).resize(function(event) {
+        var h = $(window).height();
+        $('.slide').css({height: h});
+    }).resize();
 });
