@@ -66,10 +66,6 @@ input:valid, textarea:valid   {  }
 input:invalid, textarea:invalid { border-radius: 1px; -moz-box-shadow: 0px 0px 5px red; -webkit-box-shadow: 0px 0px 5px red; box-shadow: 0px 0px 5px red; }
 .no-boxshadow input:invalid, .no-boxshadow textarea:invalid { background-color: #f0dddd; }
 
-::-moz-selection{ background: #FF5E99; color:#fff; text-shadow: none; }
-::selection { background:#FF5E99; color:#fff; text-shadow: none; }
-a:link { -webkit-tap-highlight-color: #FF5E99; }
-
 button {  width: auto; overflow: visible; }
 .ie7 img { -ms-interpolation-mode: bicubic; }
 
@@ -78,22 +74,54 @@ h1, h2, h3, h4, h5, h6 { font-weight: bold; }
 a, a:active, a:visited { color: #607890; }
 a:hover { color: #036; }
 
-/*
-    // ========================================== \\
-   ||                                              ||
-   ||               Your styles !                  ||
-   ||                                              ||
-    \\ ========================================== //
-*/
+/* ________________________________________________________________________________________________ Slide Styles - Generic */
+
+.clear {
+    clear: both;
+}
+
+article[role="main"] {
+    
+}
+
+.slide {
+    width: 1000px;
+    margin: 0px auto;
+    clear: both;
+}
+
+.slide header {
+    float: left;
+    width: 400px;
+}
+
+.slide header h1 {
+    text-align: left;
+    font-family: 'Helvetica Neue';
+    letter-spacing: -.05em;
+    font-size: 5em;
+    line-height: 1em;
+}
+
+.slide .content {
+    float: right;
+    width: 600px;
+}
+
+.slide .snippet .code {
+    float: left;
+    width: 500px;
+}
+
+.slide .snippet .notes {
+    float: right;
+    width: 400px;
+}
 
 
 
 
-
-
-
-
-
+/* ________________________________________________________________________________________________ Slide Styles - Specific */
 
 
 
