@@ -40,6 +40,7 @@
                 <div class="content">
 
                 </div>
+                <div class="clear"></div>
             </section>
             
             <section class="slide">
@@ -49,6 +50,7 @@
                 <div class="content">
                     YC logo
                 </div>
+                <div class="clear"></div>
             </section>
             
             <section class="slide">
@@ -58,6 +60,7 @@
                 <div class="content">
                     Freelance Image
                 </div>
+                <div class="clear"></div>
             </section>
             
             <section class="slide">
@@ -67,12 +70,14 @@
                 <div class="content">
                     Lyst
                 </div>
+                <div class="clear"></div>
             </section>
             
             <section class="slide">
                 <header>
                     <h1>Anyway..</h1>
                 </header>
+                <div class="clear"></div>
             </section>
             
             <section class="slide">
@@ -84,6 +89,7 @@
                         Web apps are growing more complex and comprehensive by day
                     </p>
                 </div>
+                <div class="clear"></div>
             </section>
             
             <section class="slide">
@@ -95,6 +101,7 @@
                         Users expect responsive, interactive webapps now.
                     </p>
                 </div>
+                <div class="clear"></div>
             </section>
             
             <section class="slide">
@@ -106,12 +113,14 @@
                         Which is why
                     </p>
                 </div>
+                <div class="clear"></div>
             </section>
             
             <section class="slide">
                 <header>
                     <h1>I've got a backboner for Backbone.js</h1>
                 </header>
+                <div class="clear"></div>
             </section>
             
             <section class="slide">
@@ -137,6 +146,7 @@
                         </li>
                     </ol>
                 </div>
+                <div class="clear"></div>
             </section>
             
             <section class="slide">
@@ -146,6 +156,7 @@
                 <div class="content">
                     <p>You can pick and choose as needed</p>
                 </div>
+                <div class="clear"></div>
             </section>
             
             <section class="slide">
@@ -155,12 +166,14 @@
                 <div class="content">
                     <p>You can pick and choose as needed.</p>
                 </div>
+                <div class="clear"></div>
             </section>
             
             <section class="slide">
                 <header>
                     <h1>Let's say you need to make a presentation app</h1>
                 </header>
+                <div class="clear"></div>
             </section>
             
             <section class="slide">
@@ -175,13 +188,8 @@ window.Slide = Backbone.Model.extend({
 });
 </pre>
                     </div>
-                    <div class="notes">
-                        <p>
-                            All backbone objects are created by extending a base class
-                        </p>
-                    </div>
-                    <div class="clear"></div>
                 </div>
+                <div class="clear"></div>
             </section>
             
             <section class="slide">
@@ -198,14 +206,8 @@ window.SlideCollection = Backbone.Collection.extend({
 window.Slides = new SlideCollection();
 </pre>
                     </div>
-                    <div class="notes">
-                        <p>
-                            Set the model type this collection controls. The url attribute
-                            tells Backbone.js where to send create, delete, update requests.
-                        </p>
-                    </div>
-                    <div class="clear"></div>
                 </div>
+                <div class="clear"></div>
             </section>
             
             <section class="slide">
@@ -221,27 +223,8 @@ firstSlide = Slides.create({
 });
 </pre>
                     </div>
-                    <div class="notes">
-                        <p>
-                            This is a powerful little statement.
-                        </p>
-                        <ol>
-                            <li>
-                                The model is firstSlide created
-                            </li>
-                            <li>
-                                It has the attribute 'title' set to 'Oh wow!' and some content
-                            </li>
-                            <li>
-                                A ajax POST has be sent to /slides/ to create the resourse on the server
-                            </li>
-                            <li>
-                                In time, a response whould come back and the model would be updated as needed
-                            </li>
-                        </ol>
-                    </div>
-                    <div class="clear"></div>
                 </div>
+                <div class="clear"></div>
             </section>
             
             <section class="slide">
@@ -268,11 +251,8 @@ window.SlideView = Backbone.View.extend({
 });
 </pre>
                     </div>
-                    <div class="notes">
-
-                    </div>
-                    <div class="clear"></div>
                 </div>
+                <div class="clear"></div>
             </section>
             
             <section class="slide">
@@ -280,10 +260,9 @@ window.SlideView = Backbone.View.extend({
                     <h1>Oh wow!</h1>
                 </header>
                 <div class="content">
-                    <p>
-                        This is our very own slide
-                    </p>
+                    <p>This is our very own slide</p>
                 </div>
+                <div class="clear"></div>
             </section>
             
             <section class="slide">
@@ -314,8 +293,8 @@ window.Presentor = Backbone.View.extend({
 window.app = new Presentor();
 </pre>
                     </div>
-                    <div class="clear"></div>
                 </div>
+                <div class="clear"></div>
             </section>
             
             <section class="slide">
@@ -327,6 +306,7 @@ window.app = new Presentor();
                         Oh yeah!
                     </p>
                 </div>
+                <div class="clear"></div>
             </section>
             
             <section class="slide">
@@ -347,6 +327,7 @@ window.app = new Presentor();
                         </li>
                     </ul>
                 </div>
+                <div class="clear"></div>
             </section>
             
         </article>

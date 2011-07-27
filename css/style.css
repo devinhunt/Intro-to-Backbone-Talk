@@ -76,6 +76,10 @@ a:hover { color: #036; }
 
 /* ________________________________________________________________________________________________ Slide Styles - Generic */
 
+body {
+    background-color: #fef9ef;
+}
+
 .clear {
     clear: both;
 }
@@ -87,6 +91,7 @@ article[role="main"] {
 .slide {
     width: 1000px;
     margin: 0px auto;
+    padding: 100px 0;
     clear: both;
 }
 
@@ -96,6 +101,7 @@ article[role="main"] {
 }
 
 .slide header h1 {
+    color: #333;
     text-align: left;
     font-family: 'Helvetica Neue';
     letter-spacing: -.05em;

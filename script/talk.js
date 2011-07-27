@@ -58,4 +58,9 @@ $(function() {
     window.app = new Presentor();
     
     // bootstrap the current page content into the app.
+    
+    
+    // and run, run like the wind!
+    var h = $(window).height();
+    $('.slide').css({height: h});
 });
