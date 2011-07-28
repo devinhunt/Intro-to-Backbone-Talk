@@ -12,7 +12,6 @@
 	
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 	
-	<link type="text/css" rel="stylesheet" href="css/shCoreDefault.css"/>
 	<link rel="stylesheet" href="css/style.css?v=1">
 
 	<script src="script/modernizr-1.7.min.js"></script>
@@ -21,8 +20,6 @@
 	<script src="script/backbone-min.js"></script>
 	<script src="script/backbone-localstorage.js"></script>
 	<script src="script/talk.js"></script>
-	<script src="script/shCore.js"></script>
-	<script src="script/shBrushJScript.js"></script>
 	
 </head>
 <body>
@@ -30,6 +27,12 @@
 		<header>
 
 		</header>
+		
+		<div class="slide-counter">
+		    <span class="current">1</span>
+		    <span class="of">of</span>
+		    <span class="total">22</span>
+		</div>
 
 		<article id="main" role="main">
 		    
@@ -45,30 +48,37 @@
             
             <section class="slide">
                 <header>
-                    <h1>Hi.<br/>I'm Devin Hunt</h1>
+                    <h1>Hi. I'm Devin Hunt</h1>
+                </header>
+                <div class="clear"></div>
+            </section>
+            
+            <section class="slide">
+                <header>
+                    <h1>Hi. I'm Devin Hunt</h1>
                 </header>
                 <div class="content">
-                    YC logo
+                    <img src="media/yc.gif" width="400" />
                 </div>
                 <div class="clear"></div>
             </section>
             
             <section class="slide">
                 <header>
-                    <h1>Hi.<br/>I'm Devin Hunt</h1>
+                    <h1>Hi. I'm Devin Hunt</h1>
                 </header>
                 <div class="content">
-                    Freelance Image
+                    
                 </div>
                 <div class="clear"></div>
             </section>
             
             <section class="slide">
                 <header>
-                    <h1>Hi.<br/>I'm Devin Hunt</h1>
+                    <h1>Hi. I'm Devin Hunt</h1>
                 </header>
                 <div class="content">
-                    Lyst
+                    <img src="media/Lyst-Large-Logo.png" width="400" />
                 </div>
                 <div class="clear"></div>
             </section>
@@ -85,9 +95,6 @@
                     <h1>We've got a fancy web</h1>
                 </header>
                 <div class="content">
-                    <p>
-                        Web apps are growing more complex and comprehensive by day
-                    </p>
                 </div>
                 <div class="clear"></div>
             </section>
@@ -97,30 +104,28 @@
                     <h1>Javascript is now a nesseccary part of web development</h1>
                 </header>
                 <div class="content">
-                    <p>
-                        Users expect responsive, interactive webapps now.
-                    </p>
                 </div>
                 <div class="clear"></div>
             </section>
             
             <section class="slide">
                 <header>
-                    <h1>Backbone.js gives heavy javascript apps strucutre</h1>
+                    <h1>Backbone.js gives heavy javascript apps structure</h1>
                 </header>
                 <div class="content">
-                    <p>
-                        Which is why
-                    </p>
                 </div>
                 <div class="clear"></div>
             </section>
             
             <section class="slide">
                 <header>
-                    <h1>I've got a backboner for Backbone.js</h1>
+                    <h1> </h1>
                 </header>
-                <div class="clear"></div>
+                <div class="content">
+                    <div class="title-slide">
+                        <h1>I've got a backboner for Backbone.js</h1>
+                    </div>
+                </div>
             </section>
             
             <section class="slide">
@@ -151,27 +156,13 @@
             
             <section class="slide">
                 <header>
-                    <h1>And the best part</h1>
+                    <h1>And the best part? Use what you want</h1>
                 </header>
-                <div class="content">
-                    <p>You can pick and choose as needed</p>
-                </div>
                 <div class="clear"></div>
-            </section>
-            
+            </section> 
             <section class="slide">
                 <header>
-                    <h1>And the best part</h1>
-                </header>
-                <div class="content">
-                    <p>You can pick and choose as needed.</p>
-                </div>
-                <div class="clear"></div>
-            </section>
-            
-            <section class="slide">
-                <header>
-                    <h1>Let's say you need to make a presentation app</h1>
+                    <h1>Let's say you need to make a slide deck app</h1>
                 </header>
                 <div class="clear"></div>
             </section>
@@ -184,7 +175,13 @@
                     <div class="code">
 <pre class="brush: js;">
 window.Slide = Backbone.Model.extend({
-    // nothing needed for now..
+    initialize: function() {
+        if(! this.get('title')) {
+            this.set({
+                title: 'Default Title'
+            });
+        }
+    }
 });
 </pre>
                     </div>
@@ -219,7 +216,7 @@ window.Slides = new SlideCollection();
 <pre class="brush: js;">
 firstSlide = Slides.create({
     title: 'Oh wow!',
-    content: '<p>This is our very own slide</p>'
+    content: '&lt;p&gt;This is our very own slide&lt;/p&gt;'
 });
 </pre>
                     </div>
@@ -237,7 +234,7 @@ firstSlide = Slides.create({
 window.SlideView = Backbone.View.extend({
     tagName: 'section',
     className: 'slide',
-    template: _.template('<header><h1><%= title %></h1></header><div class="content"><%= content %></div>'),
+    template: _.template('template code'),
     
     initialize: function() {
         this.model.view = this;
@@ -273,24 +270,19 @@ window.SlideView = Backbone.View.extend({
                     <div class="code">
 <pre class="brush: js;">
 window.Presentor = Backbone.View.extend({
-    el: $('#container'),
+el: $('#container'),
+currentSlide: 0,
 
-    initialize: function() {
-        Slides.bind('add', this.add, this);
-        Slides.bind('all', this.render, this);
-    },
+events: {
+    'eventName div.elm .selector' : 'eventHandler',
+    'click' : 'advance'
+},      
 
-    render: function() {
-        // reflow the slides
-        return this;
-    },
+initialize: function() {
+    Slides.bind('add', this.add, this);
+},
 
-    add: function(slide) {
-        var view = new SlideView({model: slide});
-        this.$('#main').append(view.render().el);
-    },
-});
-window.app = new Presentor();
+...
 </pre>
                     </div>
                 </div>
@@ -299,12 +291,55 @@ window.app = new Presentor();
             
             <section class="slide">
                 <header>
+                    <h1>Tie it all together with an App View</h1>
+                </header>
+                <div class="content snippet">
+                    <div class="code">
+<pre class="brush: js;">
+    add: function(slide) {
+        var view = new SlideView({
+            model: slide
+        });
+        this.$('#main').append(view.render().el);
+    },
+</pre>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </section>
+            
+            <section class="slide">
+                <header>
+                    <h1>Tie it all together with an App View</h1>
+                </header>
+                <div class="content snippet">
+                    <div class="code">
+<pre class="brush: js;">            
+    advance: function(event) {
+        this.currentSlide = Math.min(Slides.length, 
+            this.currentSlide + 1);
+            
+        slide = Slides.models[this.currentSlide];
+        
+        $('html, body').scrollTop(
+            $(slide.view.el).offset().top
+        );
+    }
+});
+window.app = new Presentor();
+</pre>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </section>
+            
+                
+            
+            <section class="slide">
+                <header>
                     <h1>This Presentation is the App</h1>
                 </header>
                 <div class="content">
-                    <p>
-                        Oh yeah!
-                    </p>
                 </div>
                 <div class="clear"></div>
             </section>
@@ -314,18 +349,26 @@ window.app = new Presentor();
                     <h1>Thank You</h1>
                 </header>
                 <div class="content">
+                    <div class="findme">
                     <p>Find me online!</p>
                     <ul>
                         <li>
-                            http://www.lyst.com
-                        </li>
-                        <li>
+                            <img src="media/twitter.png" />
+                            <br />
                             @hailpixel
                         </li>
                         <li>
-                            http://www.hailpixel.com
+                            <img src="media/lyst.png" />
+                            <br />
+                            lyst.com
+                        </li>
+                        <li>
+                            <img src="media/github.png" />
+                            <br />
+                            github.com/devinhunt
                         </li>
                     </ul>
+                    </div>
                 </div>
                 <div class="clear"></div>
             </section>

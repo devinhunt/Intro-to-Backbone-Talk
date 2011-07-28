@@ -91,19 +91,22 @@ article[role="main"] {
 }
 
 .slide {
-    width: 1000px;
+    position: relative;
+    width: 1024px;
+    height: 768px;
     margin: 0px auto;
-    padding: 100px 0;
     clear: both;
 }
 
 .slide header {
     float: left;
-    width: 400px;
+    width: 350px;
+    margin-top: 50px;
+    margin-left: 50px;
 }
 
-.slide header h1 {
-    color: #333;
+h1 {
+    color: #222;
     text-align: left;
     letter-spacing: -.05em;
     font-size: 5em;
@@ -112,17 +115,26 @@ article[role="main"] {
 
 .slide .content {
     float: right;
-    width: 600px;
+    width: 550px;
+    margin-top: 50px;
+    margin-right: 50px;
+}
+
+.slide .content img {
+    margin-top: 56px;
 }
 
 .slide .snippet .code {
     float: left;
-    width: 500px;
 }
 
-.slide .snippet .notes {
-    float: right;
-    width: 400px;
+ol, ul {
+    margin-top: 35px;
+}
+p, ol li, ul li {
+    font-size: 1.5em;
+    line-height: 1.5em;
+    margin-bottom: .5em;
 }
 
 code {
@@ -130,8 +142,10 @@ code {
 }
 
 pre {
+    margin-top: 23px;
     font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important;
-    font-size: 2em;
+    font-size: 1.4em;
+    line-height: 1.5em;
 }
 
 
@@ -139,7 +153,66 @@ pre {
 
 /* ________________________________________________________________________________________________ Slide Styles - Specific */
 
+.title-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    background-image: url('../media/spine.png');
+    background-repeat: no-repeat;
+    background-position: 150px center;
+}    
+.title-slide h1 {
+    margin-top: 100px;
+    margin-left: 400px;
+    width: 400px;
+}
 
+.slide-counter {
+    position: fixed;
+    bottom: 50px;
+    left: 50px;
+    
+    font-size: 4em;
+    font-weight: bold;
+}
+
+.slide-counter span {
+    display: inline-block;
+}
+
+.slide-counter .of {
+    text-indent: -9999px;
+    width: 25px;
+    background: url('../media/of.png') center 24px no-repeat;
+}
+
+.findme {
+    position: absolute;
+    top: 150px;
+    left: 137px;
+    width: 750px;
+}
+
+.findme p {
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.findme ul {
+    margin: 0;
+}
+
+.findme li {
+    width: 250px;
+    float: left;
+    text-align: center;
+    list-style-type: none;
+    font-size: 2em;
+}
 
 
 

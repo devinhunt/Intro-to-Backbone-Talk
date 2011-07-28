@@ -10,7 +10,11 @@
 $(function() {
     
     window.Slide = Backbone.Model.extend({
-        // nothing needed for now..
+        initialize: function() {
+            if(! this.get('title')) {
+                this.set({title: 'Default Title'});
+            }
+        }
     });
     
     window.SlideCollection = Backbone.Collection.extend({
@@ -23,7 +27,7 @@ $(function() {
     window.SlideView = Backbone.View.extend({
         tagName: 'section',
         className: 'slide',
-        template: _.template('<header><h1><%= title %></h1></header><div class="content"><%= content %></div>'),
+        template: _.template('<header><h1><%= title %></h1></header><div class="content"><%= content %></div><div class="counter"></div>'),
         
         initialize: function() {
             this.model.view = this;
@@ -40,16 +44,19 @@ $(function() {
         el: $('#container'),
         
         currentSlide: 0,
+        
+        events: {
+            'click' : 'advance'
+        },
                 
         initialize: function() {
             Slides.bind('add', this.add, this);
             Slides.bind('all', this.render, this);
-            $(document).keyup(_.bind(this.onKeyUp, this));
         },
         
         render: function() {
-            // reflow the slides
-            return this;
+            $('.slide-counter .current').text(this.currentSlide + 1);
+            $('.slide-counter .total').text(Slides.length);
         },
         
         add: function(slide) {
@@ -57,16 +64,12 @@ $(function() {
             this.$('#main').append(view.render().el);
         },
         
-        onKeyUp: function(event) {
-            event.preventDefault();
-            if(event.keyCode == 32) {
-                this.currentSlide = Math.min(Slides.length, this.currentSlide + 1);
-            } else if(event.keyCode == 8) {
-                this.currentSlide = Math.max(0, this.currentSlide - 1);
-            }
+        advance: function(event) {
+            this.currentSlide = Math.min(Slides.length, this.currentSlide + 1);
             slide = Slides.models[this.currentSlide];
-            //console.log(this.currentSlide, slide, $(slide.view.el).offset());
-        }
+            $('html, body').scrollTop($(slide.view.el).offset().top);
+            this.render();
+        },        
     });
     
     window.app = new Presentor();
@@ -75,15 +78,15 @@ $(function() {
     $('section.slide').each(function(index) {
         var jel = $(this);
         Slides.create({
-            title: jel.find('h1').text(), 
+            title: jel.find('header h1').text(), 
             content: jel.find('.content').html()
         });
         jel.remove();
     });
     
     // and run, run like the wind!
-    $(window).resize(function(event) {
-        var h = $(window).height();
-        $('.slide').css({height: h});
-    }).resize();
+    // $(window).resize(function(event) {
+    //     var h = $(window).height();
+    //     $('.slide').css({height: h});
+    // }).resize();
 });
